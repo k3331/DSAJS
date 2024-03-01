@@ -1,0 +1,55 @@
+// ChildComponent.js
+
+In React, "forwarding refs" refers to a technique that allows a component to pass a ref it receives to one of its child components. This is particularly useful when you want to access the DOM element or the instance of a child component from a parent component. Forwarding refs is typically done using the React.forwardRef function.
+
+Here's how you can use forwarding refs in React:
+
+Creating the Child Component:
+First, you create the child component that you want to forward the
+import React from 'react';
+
+In this example, the React.forwardRef function is used to create a functional component ChildComponent. It accepts a ref argument and attaches it to the input element.
+
+Using the Child Component in the Parent Component:
+Next, you can use the ChildComponent in your parent component and forward a ref to it.
+
+const ChildComponent = React.forwardRef((props, ref) => {
+  return (
+    <input ref={ref} type="text" {...props} />
+  );
+});
+
+export default ChildComponent;
+
+
+
+import React, { useRef, useEffect } from 'react';
+import ChildComponent from './ChildComponent';
+
+function ParentComponent() {
+  const inputRef = useRef();
+
+  useEffect(() => {
+    // Focus on the input element using the forwarded ref
+    inputRef.current.focus();
+  }, []);
+
+  return (
+    <div>
+      <ChildComponent ref={inputRef} />
+    </div>
+  );
+}
+
+export default ParentComponent;
+In the ParentComponent, a ref called inputRef is created using the useRef hook.This ref is then forwarded to the ChildComponent.
+
+  Using the Forwarded Ref:
+    In this example, the useEffect hook is used to focus on the input element of the ChildComponent using the forwarded ref inputRef.current.focus().
+
+This way, you can access and manipulate the DOM element or instance of the child component from the parent component while still encapsulating the child's implementation details. Forwarding refs is particularly useful in cases where you need to interact with the child component's internals but want to keep the child component abstract and reusable.
+
+
+
+
+

@@ -1,0 +1,96 @@
+# 1. Initialize a new Node.js project
+mkdir my - react - app
+cd my - react - app
+npm init - y
+
+# 2. Install React and React DOM
+npm install react react - dom
+
+# 3. Create Project Structure
+# my - react - app
+# | --dist
+# | --src
+# |   | --index.html
+# |   | --index.js
+# | -- .babelrc
+# | --webpack.config.js
+# | --package.json
+# | --node_modules
+
+# 4. Write HTML and React Code
+# src / index.html
+# < !DOCTYPE html >
+# < html lang = "en" >
+# < head >
+# < meta charset = "UTF-8" >
+# < meta name = "viewport" content = "width=device-width, initial-scale=1.0" >
+# < title > My React App</title >
+# </head >
+# < body >
+# < div id = "root" ></div >
+# < script src = "./dist/bundle.js" ></script >
+# </body >
+# </html >
+
+# src / index.js
+# import React from 'react';
+# import ReactDOM from 'react-dom';
+
+# const App = () => {
+#   return (
+# < div >
+# < h1 > Hello, React!</h1 >
+#     </div >
+#   );
+#
+};
+
+# ReactDOM.render(<App />, document.getElementById('root'));
+
+# 5. Install Babel and Webpack
+npm install @babel/core @babel/preset - env @babel/preset-react babel-loader webpack webpack-cli --save-dev
+
+# 6. Create Babel Configuration
+#.babelrc
+# {
+#   "presets": ["@babel/preset-env", "@babel/preset-react"]
+#
+}
+
+# 7. Create Webpack Configuration
+# webpack.config.js
+# const path = require('path');
+
+# module.exports = {
+#   entry: './src/index.js',
+#   output: {
+#     filename: 'bundle.js',
+#     path: path.resolve(__dirname, 'dist'),
+#
+},
+#   module: {
+#     rules: [
+#       {
+#         test: /\.(js | jsx)$ /,
+#         exclude: /node_modules/,
+#         use: {
+#           loader: 'babel-loader',
+#         },
+#       },
+#     ],
+#   },
+# };
+
+# 8. Add Build Script
+# package.json
+# "scripts": {
+#   "build": "webpack"
+#
+}
+
+# 9. Build the Project
+npm run build
+
+# 10. Run the App
+# Open the generated index.html file in a browser to see your React app.
+
